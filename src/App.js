@@ -37,7 +37,7 @@ const App = () => {
     document.body.style.color = "#ffffff";
   }
 
-  return <React.Fragment>
+  return <React.Fragment >
     <Router >
       <Navbar title="Textifyy" page="About" mode={mode} toggleMode={toggleMode} />
       <div className='container'>
