@@ -46,6 +46,7 @@ const App = () => {
           <Route path="/about" element={<About />}>
           </Route>
           <Route exact path="/" element={<TextForm buttonColor={buttonColor} heading="Enter The Text Below" toggleAlert={toggleAlert} />}>
+  
           </Route>
         </Routes>
       </div>
