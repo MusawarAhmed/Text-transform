@@ -43,7 +43,7 @@ const App = () => {
       <div className='container'>
       <Alert alert={alertMsg} />
         <Routes>
-          <Route path="/about" element={<About />}>
+          <Route path="/about" element={<About />} >
           </Route>
           <Route exact path="/" element={<TextForm buttonColor={buttonColor} heading="Enter The Text Below" toggleAlert={toggleAlert} />}>
   
