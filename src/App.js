@@ -38,6 +38,7 @@ const App = () => {
   }
 
   return <React.Fragment  >
+    
     <Router>
       <Navbar title="Textifyy" page="About" mode={mode} toggleMode={toggleMode}/>
       <div className='container'>
