@@ -1,0 +1,53 @@
+name: Daily Contribution Sync
+
+on:
+  schedule:
+    # Runs every 5 minutes for testing! (Change back to '0 */23 * * *' once tested)
+    - cron: '*/5 * * * *'
+  workflow_dispatch: # Allows manual trigger from GitHub Actions dashboard anytime!
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Configure Git Account
+        run: |
+          git config --local user.name "MusawarAhmed"
+          git config --local user.email "56961150+MusawarAhmed@users.noreply.github.com"
+
+      - name: Update Timestamp & Sync Build Version
+        run: |
+          node -e "
+            const fs = require('fs');
+            const file = 'version.json';
+            const data = fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, 'utf8')) : { version: 0 };
+            data.buildDate = new Date().toISOString();
+            data.version = (data.version || 0) + 1;
+            data.status = 'active';
+            fs.writeFileSync(file, JSON.stringify(data, null, 2) + '\n');
+          "
+
+      - name: Commit and Push Changes
+        run: |
+          git add version.json
+          # Check if there are differences to commit
+          if ! git diff-index --quiet HEAD; then
+            git commit -m "chore(sync): automated build version update [skip ci]"
+            git push origin main
+          else
+            echo "No changes detected to commit."
+          fi

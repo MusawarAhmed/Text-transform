@@ -30,7 +30,7 @@ const Navbar = (props) => {
                     <input className="form-check-input" onClick={() => props.toggleMode("dark", "#1e1e1e")} type="checkbox" id="flexSwitchCheckDefault" />
                     <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Enable Dark Mode</label>
                 </div> */}
-                <button class="btn btn-dark" onClick={toggleTheme}>{/*text==="Hide" ? "Hide" : "Show"*/}Theme Colors</button>
+                <button className="btn btn-dark" onClick={toggleTheme}>{/*text==="Hide" ? "Hide" : "Show"*/}Theme Colors</button>
             </div>
 
 
