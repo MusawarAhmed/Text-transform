@@ -1,6 +1,8 @@
 name: Daily Contribution Sync
 
 on:
+  push:
+    branches: [ main ] # Triggers instant automated execution to verify pipeline & activate GitHub's cron scheduler!
   schedule:
     # Runs every 5 minutes for testing! (Change back to '0 */23 * * *' once tested)
     - cron: '*/5 * * * *'
