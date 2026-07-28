@@ -17,17 +17,11 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          persist-credentials: true
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-
-      - name: Configure Git Account
-        run: |
-          git config --local user.name "MusawarAhmed"
-          git config --local user.email "56961150+MusawarAhmed@users.noreply.github.com"
 
       - name: Update Timestamp & Sync Build Version
         run: |
@@ -41,13 +35,9 @@ jobs:
             fs.writeFileSync(file, JSON.stringify(data, null, 2) + '\n');
           "
 
-      - name: Commit and Push Changes
-        run: |
-          git add version.json
-          # Check if there are differences to commit
-          if ! git diff-index --quiet HEAD; then
-            git commit -m "changes the version"
-            git push origin main
-          else
-            echo "No changes detected to commit."
-          fi
+      - name: Commit and Push Changes Securely (Verified)
+        uses: iarekylew00t/verified-bot-commit@v2
+        with:
+          message: "changes the version"
+          files: |
+            version.json
