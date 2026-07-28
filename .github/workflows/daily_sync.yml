@@ -46,7 +46,7 @@ jobs:
           git add version.json
           # Check if there are differences to commit
           if ! git diff-index --quiet HEAD; then
-            git commit -m "chore(sync): automated build version update [skip ci]"
+            git commit -m "changes the version"
             git push origin main
           else
             echo "No changes detected to commit."
