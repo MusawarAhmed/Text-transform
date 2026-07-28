@@ -41,3 +41,5 @@ jobs:
           message: "changes the version"
           files: |
             version.json
+          author-name: "MusawarAhmed"
+          author-email: "56961150+MusawarAhmed@users.noreply.github.com"
