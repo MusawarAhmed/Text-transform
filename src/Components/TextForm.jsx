@@ -32,13 +32,13 @@ const TextForm = (props) => {
       str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1);
     }
     setText(str.join(' '))
-    props.toggleAlert("Text is coverted to Titlecase", "Success")
+    props.toggleAlert("Text is converted to Titlecase", "Success")
   }
 
   return (
     <div className="mb-3 my-5">
       <h2>{props.heading}</h2>
-      <textarea className="form-control" id="my-form" onChange={handleOnChange} placeholder={text} value={text} rows="8"></textarea>
+      <textarea className="form-control" id="my-form" onChange={handleOnChange} placeholder="Enter your text here" value={text} rows="8"></textarea>
       <div className='float-end'>Characters: {text.replace(/ /g, "").length} Words: {text.split(" ").filter((element)=>element.length !== 0).length} </div>
       <div className='Button-container my-3'>
         <button disabled={text.length===0}className={`btn btn-${props.buttonColor}`} onClick={handleUpClick}> Convert to UpperCase </button>

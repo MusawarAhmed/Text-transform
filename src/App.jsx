@@ -34,12 +34,12 @@ const App = () => {
     toggleAlert(`${capitalize(color)} theme has been enabled`, "Success")
     setbuttonColor(`${color}-mode-color`);
     document.body.style.backgroundColor = lightcolor;
-    document.body.style.color = "#ffffff";
+    document.body.style.color = color === "light" ? "#212529" : "#ffffff";
   }
 
   return <React.Fragment  >
     
-    <Router>
+    <Router basename={import.meta.env.BASE_URL.replace(/\/$/, '')}>
       <Navbar title="Textifyy" page="About" mode={mode} toggleMode={toggleMode}/>
       <div className='container'>
       <Alert alert={alertMsg} />
